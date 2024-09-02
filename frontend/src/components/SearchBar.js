@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import styles from '../styles/components/SearchBar.module.css';
-
+import '../styles/components/SearchBar.css';
 
 function SearchBar({ onSearch }) {
   const [query, setQuery] = useState('');
@@ -10,7 +9,7 @@ function SearchBar({ onSearch }) {
   };
 
   return (
-    <div className={styles.search_bar}>
+    <div>
       <input
         type="text"
         placeholder="搜尋標題或作者"

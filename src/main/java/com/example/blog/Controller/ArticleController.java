@@ -28,16 +28,15 @@ public class ArticleController {
     private ArticleRepository articleRepository;
 
 
-    @GetMapping("/search")
+    @GetMapping
     public ResponseEntity<List<ArticleVo>> searchArticles(@RequestParam("query") String query) {
         List<ArticleVo> articles = articleService.searchByTitleOrAuthor(query);
         return new ResponseEntity<>(articles, HttpStatus.OK);
     }
     
-    
 
     // 直接用get方法 取得全部文章的列表
-    @GetMapping
+    @GetMapping("/list")
     public Page<ArticleVo> getArticleVo(
             @RequestParam(defaultValue = "0") int page,
             @RequestParam(defaultValue = "10") int size,
