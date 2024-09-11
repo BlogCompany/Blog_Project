@@ -13,8 +13,13 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 @Entity
 @Table(name = "account_vo")
+
+
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class AccountVo {
 	
 	@Id
@@ -52,7 +57,16 @@ public class AccountVo {
     @Column(name = "token_expiration")
     private LocalDateTime tokenExpiration;
     
-    public Long getId() {
+    public AccountVo(LocalDateTime acCd, LocalDateTime acLld) {
+    	this.createdDate = createdDate;
+    	this.lastLoginDate = lastLoginDate;
+    	
+	}
+    
+    public AccountVo() {
+	}
+
+	public Long getId() {
 		return id;
 	}
 
@@ -158,7 +172,7 @@ public class AccountVo {
 	
 	@Override
 	public String toString() {
-		return "PersonVo [id = " + username + ", paswd = " + password + ", email = " + email + "]" + "\n";
+		return "PersonVo [id = " + username + ", paswd = " + password + ", email = " + email + ", CreatedDate = " + createdDate + ", LastLoginDate = " + lastLoginDate + "]" + "\n";
 	}
 
 	public boolean isPresent() {
@@ -170,4 +184,6 @@ public class AccountVo {
 		// TODO Auto-generated method stub
 		return null;
 	}
+	
+
 }

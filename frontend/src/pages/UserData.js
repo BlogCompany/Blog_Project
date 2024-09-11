@@ -1,36 +1,37 @@
-import React from "react";
+import React, { useState, useEffect, useContext } from "react";
 import UserProfile from "../components/UserProfile";
 import UserAvatar from "../components/UserAvatar";
 import UserArticles from "../components/UserArticles";
 import styles from "../styles/pages/UserData.module.css"
-
-const articles = [
-    { title: '文章標題 1', url: 'article1-url', description: '文章摘要或簡短描述 1' },
-    { title: '文章標題 2', url: 'article2-url', description: '文章摘要或簡短描述 2' },
-    { title: '文章標題 3', url: 'article3-url', description: '文章摘要或簡短描述 3' },
-];
+import { UserContext } from '../components/UserContext';
 
 
 const UserData = () => {
 
+    const { user } = useContext(UserContext); // 取得 setUser 方法
+
     return (
-        <div class={styles.wrapper}>
-            <h1>Account Name的小窩</h1>
-            <main class={styles.profile_wrapper}>
-                <div className={styles.profile_container}>
-                    <div className={styles.grid_container}>
-                        <div className={styles.profile}>
-                        <UserProfile userId={4}/>
+        <div className="container mt-2">
+            <h1 className="text-center mb-4">{user?.username} 的小窩</h1>
+            <div className="card mx-auto" style={{ maxWidth: '70%' }}>
+                <div className="card-body p-1">
+                    <main className="mt-4">
+                        <div className="row">
+                            <div className="col-md-6 mb-3">
+                                <UserProfile userId={user?.id} />
+                            </div>
+                            <div className="col-md-6 mb-3 d-flex justify-content-center align-items-center">
+                                <UserAvatar id={user?.id} />
+                            </div>
                         </div>
-                        <div className={styles.avatar}>
-                        <UserAvatar />
+                        <div className="row">
+                            <div className="col-12">
+                                <UserArticles authorId={user?.id} />
+                            </div>
                         </div>
-                        <div className={styles.full_width}>
-                            {/* <UserArticles articles={articles} /> */}
-                        </div>
-                    </div>
+                    </main>
                 </div>
-            </main>
+            </div>
         </div>
     );
 }

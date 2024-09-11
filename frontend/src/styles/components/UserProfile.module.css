@@ -1,37 +1,52 @@
 .profile_button {
     font-weight: bold;
     font-size: 15px;
-    width: 15%;
-    height: 2em;
-    background-color: #333;
-    color: #fff;
+    width: 20%;
+    height: 50px;
     border: none;
     padding: 5px;
     border-radius: 5px;
-    float: right;
+    margin-left: 10px;
 }
 
-.userProfie_label {
+.userProfile_label {
     font-weight: bold;
     margin: 10px 0px 10px 0px;
 }
 
 .text_area {
-    width: 80%;
+    width: 70%;
     height: 2em;
     margin: 0px 5px 5px 5px;
     float: left;
 }
 
+.label {
+    color: black;
+    font-size: large;
+    margin-left: 10px;
+}
+
+.time {
+    color: black;
+    font-size: large;
+    margin-left: 10px;
+}
 
 .error{
     font-weight: bold;
+    color: black;
 }
 
-.userProfie_p{
+.userProfile_p{
     margin-bottom: 10px;
+    font-weight: bold;
 }
 
 .input_password{
     border: none;
+}
+
+.profile {
+    display: flex;
 }
