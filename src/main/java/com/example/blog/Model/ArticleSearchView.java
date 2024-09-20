@@ -1,5 +1,8 @@
 package com.example.blog.Model;
 
+import java.time.LocalDateTime;
+
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
@@ -15,7 +18,8 @@ public class ArticleSearchView {
     private String contentTEXT;
     private Integer tag_id; // 使用包裝類型 Integer 來處理可能為 NULL 的值
     private String username;
-    private String last_edited_at;
+    @Column(name = "last_edited_at") // 確保這裡與資料庫欄位匹配
+    private LocalDateTime lastEditedAt; 
     
     public Long getArticle_id() {
         return article_id;
@@ -53,11 +57,11 @@ public class ArticleSearchView {
     public void setUsername(String username) {
         this.username = username;
     }
-    public String getLast_edited_at() {
-        return last_edited_at;
+    public LocalDateTime getLastEditedAt() {
+        return lastEditedAt;
     }
-    public void setLast_edited_at(String last_edited_at) {
-        this.last_edited_at = last_edited_at;
+    public void setLastEditedAt(LocalDateTime lastEditedAt) {
+        this.lastEditedAt = lastEditedAt;
     }
     
 }

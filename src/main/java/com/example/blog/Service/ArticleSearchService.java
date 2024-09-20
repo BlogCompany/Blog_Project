@@ -24,7 +24,7 @@ public class ArticleSearchService {
     // 分頁查詢
     public Page<ArticleSearchView> searchArticles(String keyword, int page, int size) {
         Pageable pageable = PageRequest.of(page, size);
-        return repository.findByTitleContainingIgnoreCaseOrUsernameContainingIgnoreCase(keyword, keyword, pageable);
+        return repository.findByTitleContainingIgnoreCaseOrUsernameContainingIgnoreCaseOrderByLastEditedAtDesc(keyword, keyword, pageable);
     }
 
     // 獲取所有文章（這裡也可以添加分頁）
