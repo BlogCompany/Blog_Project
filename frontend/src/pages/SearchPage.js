@@ -64,6 +64,18 @@ function SearchPage() {
     return tag ? tag.name : '未知標籤';
   };
 
+  const formatDateTime = (dateTimeString) => {
+    const date = new Date(dateTimeString);
+    const year = date.getFullYear();
+    const month = date.getMonth() + 1; // 月份是從0開始的，所以要加1
+    const day = date.getDate();
+    const hours = String(date.getHours()).padStart(2, '0');
+    const minutes = String(date.getMinutes()).padStart(2, '0');
+    const seconds = String(date.getSeconds()).padStart(2, '0');
+  
+    return `${year}/${month}/${day} ${hours}:${minutes}:${seconds}`;
+  };
+
   return (
     <div className={styles.search_page}>
       <SearchBar onSearch={handleSearch} value={query} /> {/* 傳遞 query 作為 value */}
@@ -87,7 +99,7 @@ function SearchPage() {
               <div className={styles['result-content']}>
                 <a href={`/singleArticle/${result.article_id}`} className={styles['result-title']}>{result.title}</a>
                 <a href={`/UserData/${result.author_id}`} className={styles['result-author']}>| 作者: {result.username || '未知作者'}</a>
-                <span className={styles['result-updated']}>| 更新時間: {result.last_edited_at}</span>
+                <span className={styles['result-updated']}>| 更新時間: {formatDateTime(result.lastEditedAt)}</span>
                 <span className={styles['result-tag']}>| {getTagNameById(result.tag_id)}</span>
               </div>
               <div className={styles['result-excerpt']}>
